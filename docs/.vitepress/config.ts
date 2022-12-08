@@ -17,7 +17,7 @@ export default {
 		},
 		editLink: {
 			text: "为此页提供修改建议",
-			pattern: "https://github.com/HalseySpicy/Geeker-Admin-Docs/tree/main/:path",
+			pattern: "https://github.com/HalseySpicy/Geeker-Admin-Docs",
 		},
 		socialLinks: [{ icon: "github", link: "https://github.com/HalseySpicy/Geeker-Admin" }],
 		footer: {
