@@ -18,3 +18,8 @@
 		background-color: #4d4c4c;
 	}
 }
+
+// 图片预览插件
+.hevue-imgpreview-wrap .he-img-wrap {
+	backdrop-filter: blur(8px);
+}

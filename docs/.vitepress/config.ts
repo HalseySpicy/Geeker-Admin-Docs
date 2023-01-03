@@ -12,8 +12,8 @@ export default {
 		logo: "/logo.svg",
 		algolia: {
 			appId: "YMXN47DKMJ",
-			apiKey: "2ec740b16439cea54487baed422387f2",
-			indexName: "Geeker",
+			apiKey: "8bf7d8e2b7e7b32a95f5aec9aca38a70",
+			indexName: "Geeker-Admin",
 		},
 		editLink: {
 			text: "为此页提供修改建议",
