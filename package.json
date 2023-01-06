@@ -21,8 +21,5 @@
 		"vite": "^3.2.5",
 		"vitepress": "^1.0.0-alpha.30",
 		"vue": "^3.2.45"
-	},
-	"dependencies": {
-		"hevue-img-preview": "^6.0.1"
 	}
 }

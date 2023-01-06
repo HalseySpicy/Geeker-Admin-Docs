@@ -19,7 +19,7 @@ npm install prettier -D
 
 ### 2、安装 Vscode 插件（Prettier）：
 
-<Preview src="../images/Prettier.png" />
+![Prettier](../images/Prettier.png)
 
 ### 3、配置 Prettier（.prettierrc.js）：
 
@@ -84,7 +84,7 @@ npm install eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-v
 
 ### 2、安装 Vscode 插件（ESLint）：
 
-<Preview src="../images/ESLint.png" />
+![ESLint](../images/ESLint.png)
 
 ### 3、配置 ESLint（.eslintrc.js）：
 
@@ -187,7 +187,7 @@ npm i stylelint stylelint-config-html stylelint-config-recommended-scss stylelin
 
 ### 2、安装 Vscode 插件（StyleLint）：
 
-<Preview src="../images/Stylelint.png" />
+![Stylelint](../images/Stylelint.png)
 
 ### 3、在目录的 .vscode 文件夹下新建 settings.json：
 
@@ -273,7 +273,7 @@ module.exports = {
 
 ### 2、安装 VsCode 插件（EditorConfig ）：
 
-<Preview src="../images/EditorConfig.png" />
+![EditorConfig](../images/EditorConfig.png)
 
 ### 3、配置 EditorConfig（.editorconfig）：
 
