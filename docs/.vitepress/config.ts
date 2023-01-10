@@ -1,3 +1,5 @@
+import mdItCustomAttrs from "markdown-it-custom-attrs";
+
 export default {
 	title: "Geeker-Admin",
 	lang: "zh-CN",
@@ -6,7 +8,12 @@ export default {
 		["meta", { name: "author", content: "HalseySpicy" }],
 		["meta", { name: "keywords", content: "Geeker, Geeker-Admin, Geeker-Admin-Docs, Vite, Vue, Vue3" }],
 		["link", { rel: "icon", href: "/logo.svg" }],
+		["link", { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" }],
+		["script", { src: "https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js" }],
 	],
+	markdown: {
+		config: (md) => md.use(mdItCustomAttrs, "image", { "data-fancybox": "gallery" }),
+	},
 	lastUpdated: true,
 	themeConfig: {
 		logo: "/logo.svg",
