@@ -1,13 +1,15 @@
 # 项目规范
 
-> **本项目推荐使用 Visual Studio Code 开发**
+本项目推荐使用 Visual Studio Code 开发
 
 ## 项目文件、组件命名规范
 
-> **完全采用 Vue 官方推荐的风格指南，请务必查看 💢**
+- Link（v3）：https://cn.vuejs.org/style-guide
+- Link（v2）：https://v2.cn.vuejs.org/v2/style-guide
 
-- **Link（v3）：** https://cn.vuejs.org/style-guide
-- **Link（v2）：** https://v2.cn.vuejs.org/v2/style-guide
+:::warning
+💢 Geeker Admin 采用 Vue 官方推荐的风格指南，请务必查看
+:::
 
 ## 代码格式化工具（Prettier）
 
@@ -561,19 +563,21 @@ module.exports = {
 ## 配置 package.json 命令
 
 ```json
-"scripts": {
-	"dev": "vite",
-	"serve": "vite",
-	"build:dev": "vue-tsc --noEmit && vite build --mode development",
-	"build:test": "vue-tsc --noEmit && vite build --mode test",
-	"build:pro": "vue-tsc --noEmit && vite build --mode production",
-	"preview": "vite preview",
-	"lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
-	"lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
-	"lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
-	"lint:lint-staged": "lint-staged",
-	"prepare": "husky install",
-	"release": "standard-version",
-	"commit": "git pull && git add -A && git-cz && git push"
+{
+	"scripts": {
+		"dev": "vite",
+		"serve": "vite",
+		"build:dev": "vue-tsc --noEmit && vite build --mode development",
+		"build:test": "vue-tsc --noEmit && vite build --mode test",
+		"build:pro": "vue-tsc --noEmit && vite build --mode production",
+		"preview": "vite preview",
+		"lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
+		"lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
+		"lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+		"lint:lint-staged": "lint-staged",
+		"prepare": "husky install",
+		"release": "standard-version",
+		"commit": "git pull && git add -A && git-cz && git push"
+	}
 }
 ```

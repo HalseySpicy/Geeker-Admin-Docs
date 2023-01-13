@@ -1,6 +1,6 @@
 <template>
-	<a :href="link" target="_blank" style="padding-right: 10px">
-		<img :src="src" :alt="title" :title="title" class="avatar" />
+	<a :href="link" target="_blank">
+		<img class="avatar" :src="src" :alt="title" :title="title" />
 	</a>
 </template>
 
@@ -9,6 +9,9 @@ defineProps<{ src: string; title: string; link: string }>();
 </script>
 
 <style scoped lang="scss">
+a {
+	padding-right: 10px;
+}
 .avatar {
 	width: 50px;
 	height: 50px;

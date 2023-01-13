@@ -6,14 +6,12 @@ export default {
 	description: "Geeker Admin 中文文档",
 	head: [
 		["meta", { name: "author", content: "HalseySpicy" }],
-		["meta", { name: "keywords", content: "Geeker, Geeker-Admin, Geeker-Admin-Docs, Vite, Vue, Vue3" }],
+		["meta", { name: "keywords", content: "Geeker, Geeker-Admin, Geeker-Admin-Docs, Vite, Vue, Vue3, Admin" }],
 		["link", { rel: "icon", href: "/logo.svg" }],
 		["link", { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" }],
 		["script", { src: "https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js" }],
 	],
-	markdown: {
-		config: (md) => md.use(mdItCustomAttrs, "image", { "data-fancybox": "gallery" }),
-	},
+	markdown: { config: (md) => md.use(mdItCustomAttrs, "image", { "data-fancybox": "gallery" }) },
 	lastUpdated: true,
 	themeConfig: {
 		logo: "/logo.svg",
@@ -56,7 +54,7 @@ export default {
 					{ text: "更新日志", link: "https://github.com/HalseySpicy/Geeker-Admin/blob/master/CHANGELOG.md" },
 				],
 			},
-			{ text: "赞助", link: "/sponsor/index" },
+			{ text: "🍵 赞助", link: "/sponsor/index" },
 		],
 
 		sidebar: {
