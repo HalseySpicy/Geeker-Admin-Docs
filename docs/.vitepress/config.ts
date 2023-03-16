@@ -84,7 +84,10 @@ export default {
 				{
 					text: "其他",
 					collapsible: true,
-					items: [{ text: "常见问题", link: "/guide/question" }],
+					items: [
+						{ text: "vite配置解析", link: "/guide/vite-config", items:[{ text: "loadEnv解析", link: "/guide/loadenv" }] },
+						{ text: "常见问题", link: "/guide/question" }
+					],
 				},
 			],
 			"/components/": [
