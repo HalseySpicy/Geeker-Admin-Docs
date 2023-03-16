@@ -38,7 +38,7 @@ function loadEnv(
   const parsed = Object.fromEntries(
     envFiles.flatMap((file) => {
       // 按envFiles下标2 .env.development, path='/Users/admin/Desktop/project/.env.development'
-      // 下面有lookupFile解析
+      //  下面有lookupFile解析
       const path = lookupFile(envDir, [file], {
         pathOnly: true,
         rootDir: envDir,
