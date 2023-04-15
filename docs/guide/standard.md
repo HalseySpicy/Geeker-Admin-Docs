@@ -15,55 +15,57 @@
 
 ### 1、下载 prettier 相关依赖：
 
-```text
-npm install prettier -D
+```bash
+pnpm install prettier -D
 ```
 
 ### 2、安装 Vscode 插件（Prettier）：
 
 ![Prettier](../images/Prettier.png)
 
-### 3、配置 Prettier（.prettierrc.js）：
+### 3、配置 Prettier（.prettierrc.cjs）：
 
 ```javascript
 // @see: https://www.prettier.cn
 
 module.exports = {
-	// 超过最大值换行
+	// 指定最大换行长度
 	printWidth: 130,
-	// 缩进字节数
+	// 缩进制表符宽度 | 空格数
 	tabWidth: 2,
-	// 使用制表符而不是空格缩进行
-	useTabs: true,
-	// 结尾不用分号(true有，false没有)
+	// 使用制表符而不是空格缩进行 (true：制表符，false：空格)
+	useTabs: false,
+	// 结尾不用分号 (true：有，false：没有)
 	semi: true,
-	// 使用单引号(true单双引号，false双引号)
+	// 使用单引号 (true：单引号，false：双引号)
 	singleQuote: false,
-	// 更改引用对象属性的时间 可选值"<as-needed|consistent|preserve>"
+	// 在对象字面量中决定是否将属性名用引号括起来 可选值 "<as-needed|consistent|preserve>"
 	quoteProps: "as-needed",
-	// 在对象，数组括号与文字之间加空格 "{ foo: bar }"
-	bracketSpacing: true,
-	// 多行时尽可能打印尾随逗号。（例如，单行数组永远不会出现逗号结尾。） 可选值"<none|es5|all>"，默认none
-	trailingComma: "none",
-	// 在JSX中使用单引号而不是双引号
+	// 在JSX中使用单引号而不是双引号 (true：单引号，false：双引号)
 	jsxSingleQuote: false,
-	//  (x) => {} 箭头函数参数只有一个时是否要有小括号。avoid：省略括号 ,always：不省略括号
+	// 多行时尽可能打印尾随逗号 可选值"<none|es5|all>"
+	trailingComma: "none",
+	// 在对象，数组括号与文字之间加空格 "{ foo: bar }" (true：有，false：没有)
+	bracketSpacing: true,
+	// 将 > 多行元素放在最后一行的末尾，而不是单独放在下一行 (true：放末尾，false：单独一行)
+	bracketSameLine: false,
+	// (x) => {} 箭头函数参数只有一个时是否要有小括号 (avoid：省略括号，always：不省略括号)
 	arrowParens: "avoid",
-	// 如果文件顶部已经有一个 doclock，这个选项将新建一行注释，并打上@format标记。
-	insertPragma: false,
 	// 指定要使用的解析器，不需要写文件开头的 @prettier
 	requirePragma: false,
-	// 默认值。因为使用了一些折行敏感型的渲染器（如GitHub comment）而按照markdown文本样式进行折行
+	// 可以在文件顶部插入一个特殊标记，指定该文件已使用 Prettier 格式化
+	insertPragma: false,
+	// 用于控制文本是否应该被换行以及如何进行换行
 	proseWrap: "preserve",
-	// 在html中空格是否是敏感的 "css" - 遵守CSS显示属性的默认值， "strict" - 空格被认为是敏感的 ，"ignore" - 空格被认为是不敏感的
+	// 在html中空格是否是敏感的 "css" - 遵守 CSS 显示属性的默认值， "strict" - 空格被认为是敏感的 ，"ignore" - 空格被认为是不敏感的
 	htmlWhitespaceSensitivity: "css",
-	// 换行符使用 lf 结尾是 可选值"<auto|lf|crlf|cr>"
+	// 控制在 Vue 单文件组件中 <script> 和 <style> 标签内的代码缩进方式
+	vueIndentScriptAndStyle: false,
+	// 换行符使用 lf 结尾是 可选值 "<auto|lf|crlf|cr>"
 	endOfLine: "auto",
-	// 这两个选项可用于格式化以给定字符偏移量（分别包括和不包括）开始和结束的代码
+	// 这两个选项可用于格式化以给定字符偏移量（分别包括和不包括）开始和结束的代码 (rangeStart：开始，rangeEnd：结束)
 	rangeStart: 0,
 	rangeEnd: Infinity,
-	// Vue文件脚本和样式标签缩进
-	vueIndentScriptAndStyle: false,
 };
 ```
 
@@ -71,8 +73,8 @@ module.exports = {
 
 ### 1、下载 ESLint 相关依赖：
 
-```text
-npm install eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue @typescript-eslint/eslint-plugin @typescript-eslint/parser -D
+```bash
+pnpm install eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue @typescript-eslint/eslint-plugin @typescript-eslint/parser -D
 ```
 
 |               依赖               |                               作用描述                               |
@@ -88,7 +90,7 @@ npm install eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-v
 
 ![ESLint](../images/ESLint.png)
 
-### 3、配置 ESLint（.eslintrc.js）：
+### 3、配置 ESLint（.eslintrc.cjs）：
 
 ```javascript
 // @see: http://eslint.cn
@@ -100,9 +102,9 @@ module.exports = {
 		node: true,
 		es6: true,
 	},
-	/* 指定如何解析语法 */
+	// 指定如何解析语法
 	parser: "vue-eslint-parser",
-	/* 优先级低于 parse 的语法解析配置 */
+	// 优先级低于 parse 的语法解析配置
 	parserOptions: {
 		parser: "@typescript-eslint/parser",
 		ecmaVersion: 2020,
@@ -112,14 +114,13 @@ module.exports = {
 			jsx: true,
 		},
 	},
-	/* 继承某些已有的规则 */
+	// 继承某些已有的规则
 	extends: [
 		"plugin:vue/vue3-recommended",
 		"plugin:@typescript-eslint/recommended",
-		"prettier",
 		"plugin:prettier/recommended",
 	],
-	/*
+	/**
 	 * "off" 或 0    ==>  关闭规则
 	 * "warn" 或 1   ==>  打开的规则作为警告（不影响代码执行）
 	 * "error" 或 2  ==>  规则作为一个错误（代码不能执行，界面报错）
@@ -128,8 +129,8 @@ module.exports = {
 		// eslint (http://eslint.cn/docs/rules)
 		"no-var": "error", // 要求使用 let 或 const 而不是 var
 		"no-multiple-empty-lines": ["error", { max: 1 }], // 不允许多个空行
+		"prefer-const": "off", // 使用 let 关键字声明但在初始分配后从未重新分配的变量，要求使用 const
 		"no-use-before-define": "off", // 禁止在 函数/类/变量 定义之前使用它们
-		"prefer-const": "off", // 此规则旨在标记使用 let 关键字声明但在初始分配后从未重新分配的变量，要求使用 const
 		"no-irregular-whitespace": "off", // 禁止不规则的空白
 
 		// typeScript (https://typescript-eslint.io/rules)
@@ -148,10 +149,10 @@ module.exports = {
 		"@typescript-eslint/explicit-module-boundary-types": "off", // 要求导出函数和类的公共类方法的显式返回和参数类型
 
 		// vue (https://eslint.vuejs.org/rules)
-		"vue/no-v-html": "off", // 禁止使用 v-html
 		"vue/script-setup-uses-vars": "error", // 防止<script setup>使用的变量<template>被标记为未使用，此规则仅在启用该no-unused-vars规则时有效。
 		"vue/v-slot-style": "error", // 强制执行 v-slot 指令样式
 		"vue/no-mutating-props": "off", // 不允许组件 prop的改变
+		"vue/no-v-html": "off", // 禁止使用 v-html
 		"vue/custom-event-name-casing": "off", // 为自定义事件名称强制使用特定大小写
 		"vue/attributes-order": "off", // vue api使用顺序，强制执行属性顺序
 		"vue/one-component-per-file": "off", // 强制每个组件都应该在自己的文件中
@@ -170,8 +171,8 @@ module.exports = {
 
 ### 1、下载 StyleLint 相关依赖：
 
-```text
-npm i stylelint stylelint-config-html stylelint-config-recommended-scss stylelint-config-recommended-vue stylelint-config-standard stylelint-config-standard-scss stylelint-config-recess-order postcss postcss-html stylelint-config-prettier -D
+```bash
+pnpm install stylelint stylelint-config-html stylelint-config-recommended-scss stylelint-config-recommended-vue stylelint-config-standard stylelint-config-standard-scss stylelint-config-recess-order postcss postcss-html stylelint-config-prettier -D
 ```
 
 |               依赖                |                                                                     作用描述                                                                     |
@@ -182,10 +183,10 @@ npm i stylelint stylelint-config-html stylelint-config-recommended-scss stylelin
 | stylelint-config-recommended-vue  |                                         扩展 stylelint-config-recommended 共享配置，并为 Vue 配置其规则                                          |
 |     stylelint-config-standard     | 打开额外的规则来执行在规范和一些 CSS 样式指南中发现的通用约定，包括：惯用 CSS 原则，谷歌的 CSS 样式指南，Airbnb 的样式指南，和 @mdo 的代码指南。 |
 |  stylelint-config-standard-scss   |                                          扩展 stylelint-config-standard 共享配置，并为 SCSS 配置其规则                                           |
-|              postcss              |                                                              postcss-html 的依赖包                                                               |
-|           postcss-html            |                                                   用于解析 HTML（和类似 HTML）的 PostCSS 语法                                                    |
 |   stylelint-config-recess-order   |                                                               属性的排序（插件包）                                                               |
 |     stylelint-config-prettier     |                                                   关闭所有不必要的或可能与 Prettier 冲突的规则                                                   |
+|              postcss              |                                                              postcss-html 的依赖包                                                               |
+|           postcss-html            |                                                   用于解析 HTML（和类似 HTML）的 PostCSS 语法                                                    |
 
 ### 2、安装 Vscode 插件（StyleLint）：
 
@@ -196,10 +197,10 @@ npm i stylelint stylelint-config-html stylelint-config-recommended-scss stylelin
 ```json
 {
 	"editor.formatOnSave": true,
-	"stylelint.enable": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.stylelint": true
 	},
+	"stylelint.enable": true,
 	"stylelint.validate": [
 		"css",
 		"less",
@@ -215,48 +216,45 @@ npm i stylelint stylelint-config-html stylelint-config-recommended-scss stylelin
 
 > 😎 也可以在 vscode 中全局配置上述 json 代码 😎
 
-### 4、配置 StyleLint（.stylelintrc.js）：
+### 4、配置 StyleLint（.stylelintrc.cjs）：
 
 ```javascript
 // @see: https://stylelint.io
 
 module.exports = {
-	/* 继承某些已有的规则 */
+	root: true,
+	// 继承某些已有的规则
 	extends: [
-		"stylelint-config-standard", // 配置stylelint拓展插件
+		"stylelint-config-standard", // 配置 stylelint 拓展插件
 		"stylelint-config-html/vue", // 配置 vue 中 template 样式格式化
-		"stylelint-config-standard-scss", // 配置stylelint scss插件
+		"stylelint-config-standard-scss", // 配置 stylelint scss 插件
 		"stylelint-config-recommended-vue/scss", // 配置 vue 中 scss 样式格式化
-		"stylelint-config-recess-order", // 配置stylelint css属性书写顺序插件,
-		"stylelint-config-prettier", // 配置stylelint和prettier兼容
+		"stylelint-config-recess-order", // 配置 stylelint css 属性书写顺序插件,
+		"stylelint-config-prettier", // 配置 stylelint 和 prettier 兼容
 	],
 	overrides: [
-		// 扫描 .vue/html 文件中的<style>标签内的样式
+		// 扫描 .vue/html 文件中的 <style> 标签内的样式
 		{
 			files: ["**/*.{vue,html}"],
 			customSyntax: "postcss-html",
 		},
 	],
-	/**
-	 * null  => 关闭该规则
-	 */
 	rules: {
-		"value-keyword-case": null, // 在 css 中使用 v-bind，不报错
-		"no-descending-specificity": null, // 禁止在具有较高优先级的选择器后出现被其覆盖的较低优先级的选择器
-		"function-url-quotes": "always", // 要求或禁止 URL 的引号 "always(必须加上引号)"|"never(没有引号)"
-		"string-quotes": "double", // 指定字符串使用单引号或双引号
-		"unit-case": null, // 指定单位的大小写 "lower(全小写)"|"upper(全大写)"
+		"function-url-quotes": "always", // URL 的引号 "always(必须加上引号)"|"never(没有引号)"
+		"string-quotes": "double", // 指定字符串使用单引号或双引号 "single(单引号)"|"double(双引号)"
+		"unit-case": "lower", // 指定单位的大小写 "lower(全小写)"|"upper(全大写)"
 		"color-hex-case": "lower", // 指定 16 进制颜色的大小写 "lower(全小写)"|"upper(全大写)"
 		"color-hex-length": "long", // 指定 16 进制颜色的简写或扩写 "short(16进制简写)"|"long(16进制扩写)"
-		"rule-empty-line-before": "never", // 要求或禁止在规则之前的空行 "always(规则之前必须始终有一个空行)"|"never(规则前绝不能有空行)"|"always-multi-line(多行规则之前必须始终有一个空行)"|"never-multi-line(多行规则之前绝不能有空行。)"
-		"font-family-no-missing-generic-family-keyword": null, // 禁止在字体族名称列表中缺少通用字体族关键字
+		"rule-empty-line-before": "never", // 要求或禁止在规则之前的空行 "always(规则之前必须始终有一个空行)"|"never(规则前绝不能有空行)"|"always-multi-line(多行规则之前必须始终有一个空行)"|"never-multi-line(多行规则之前绝不能有空行)"
 		"block-opening-brace-space-before": "always", // 要求在块的开大括号之前必须有一个空格或不能有空白符 "always(大括号前必须始终有一个空格)"|"never(左大括号之前绝不能有空格)"|"always-single-line(在单行块中的左大括号之前必须始终有一个空格)"|"never-single-line(在单行块中的左大括号之前绝不能有空格)"|"always-multi-line(在多行块中，左大括号之前必须始终有一个空格)"|"never-multi-line(多行块中的左大括号之前绝不能有空格)"
-		"property-no-unknown": null, // 禁止未知的属性(true 为不允许)
+		"font-family-no-missing-generic-family-keyword": null, // 禁止在字体族名称列表中缺少通用字体族关键字
+		"scss/at-import-partial-extension": null, // 解决不能使用 @import 引入 scss 文件
+		"property-no-unknown": null, // 禁止未知的属性
 		"no-empty-source": null, // 禁止空源码
-		"declaration-block-trailing-semicolon": null, // 要求或不允许在声明块中使用尾随分号 string："always(必须始终有一个尾随分号)"|"never(不得有尾随分号)"
 		"selector-class-pattern": null, // 强制选择器类名的格式
-		"scss/at-import-partial-extension": null, // 解决不能引入scss文件
-		"value-no-vendor-prefix": null, // 关闭 vendor-prefix(为了解决多行省略 -webkit-box)
+		"value-no-vendor-prefix": null, // 关闭 vendor-prefix (为了解决多行省略 -webkit-box)
+		"no-descending-specificity": null, // 不允许较低特异性的选择器出现在覆盖较高特异性的选择器
+		"value-keyword-case": null, // 解决在 scss 中使用 v-bind 大写单词报错
 		"selector-pseudo-class-no-unknown": [
 			true,
 			{
@@ -264,6 +262,7 @@ module.exports = {
 			},
 		],
 	},
+	ignoreFiles: ["**/*.js", "**/*.jsx", "**/*.tsx", "**/*.ts"],
 };
 ```
 
@@ -280,76 +279,78 @@ module.exports = {
 ### 3、配置 EditorConfig（.editorconfig）：
 
 ```javascript
-# http://editorconfig.org
+# @see: http://editorconfig.org
+
 root = true
 
 [*] # 表示所有文件适用
 charset = utf-8 # 设置文件字符集为 utf-8
 end_of_line = lf # 控制换行类型(lf | cr | crlf)
 insert_final_newline = true # 始终在文件末尾插入一个新行
-indent_style = tab # 缩进风格（tab | space）
+indent_style = space # 缩进风格（tab | space）
 indent_size = 2 # 缩进大小
 max_line_length = 130 # 最大行长度
 
-[*.md] # 表示仅 md 文件适用以下规则
+[*.md] # 表示仅对 md 文件适用以下规则
 max_line_length = off # 关闭最大行长度限制
 trim_trailing_whitespace = false # 关闭末尾空格修剪
+
 ```
 
 ## Git 流程规范配置
 
-|              依赖               |                                    作用描述                                    |
-| :-----------------------------: | :----------------------------------------------------------------------------: |
-|              husky              |           操作 **git** 钩子的工具（在 **git xx** 之前执行某些命令）            |
-|           lint-staged           |  在提交之前进行 **eslint** 校验，并使用 **prettier** 格式化本地暂存区的代码，  |
-|         @commitlint/cli         |             校验 **git commit** 信息是否符合规范，保证团队的一致性             |
-| @commitlint/config-conventional |                             **Anglar** 的提交规范                              |
-|           commitizen            | 基于 **Node.js** 的 **git commit** 命令行工具，生成标准化的 **commit message** |
-|             cz-git              |    一款工程性更强，轻量级，高度自定义，标准输出格式的 **commitize** 适配器     |
+|              依赖               |                                   作用描述                                   |
+| :-----------------------------: | :--------------------------------------------------------------------------: |
+|              husky              |          操作 **git** 钩子的工具（在 **git xx** 之前执行某些命令）           |
+|           lint-staged           | 在提交之前进行 **eslint** 校验，并使用 **prettier** 格式化本地暂存区的代码， |
+|         @commitlint/cli         |            校验 **git commit** 信息是否符合规范，保证团队的一致性            |
+| @commitlint/config-conventional |                            **Anglar** 的提交规范                             |
+|               czg               |               交互式命令行工具生成标准化的 git commit message                |
+|             cz-git              |   一款工程性更强，轻量级，高度自定义，标准输出格式的 **commitize** 适配器    |
 
 ### 1、husky（操作 git 钩子的工具）：
 
 > **安装：**
 
-```text
-npm install husky -D
+```bash
+pnpm install husky -D
 ```
 
 > **使用（为了添加.husky 文件夹）：**
 
-```text
+```bash
 # 编辑 package.json > prepare 脚本并运行一次
 
-npm set-script prepare "husky install"
-npm run prepare
+pnpm set-script prepare "husky install"
+pnpm prepare
 ```
 
 ### 2、 lint-staged（本地暂存代码检查工具）
 
 > **安装：**
 
-```text
-npm install lint-staged --D
+```bash
+pnpm install lint-staged --D
 ```
 
 > **添加 ESlint Hook（在.husky 文件夹下添加 pre-commit 文件）：**
 
 > **作用：通过钩子函数，判断提交的代码是否符合规范，并使用 prettier 格式化代码**
 
-```text
+```bash
 npx husky add .husky/pre-commit "npm run lint:lint-staged"
 ```
 
-> 新增 **lint-staged.config.js** 文件：
+> 新增 **lint-staged.config.cjs** 文件：
 
-```text
+```bash
 module.exports = {
-	"*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
-	"{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": ["prettier --write--parser json"],
-	"package.json": ["prettier --write"],
-	"*.vue": ["eslint --fix", "prettier --write", "stylelint --fix"],
-	"*.{scss,less,styl,html}": ["stylelint --fix", "prettier --write"],
-	"*.md": ["prettier --write"]
+  "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
+  "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": ["prettier --write--parser json"],
+  "package.json": ["prettier --write"],
+  "*.vue": ["eslint --fix", "prettier --write", "stylelint --fix"],
+  "*.{scss,less,styl,html}": ["stylelint --fix", "prettier --write"],
+  "*.md": ["prettier --write"]
 };
 ```
 
@@ -357,34 +358,34 @@ module.exports = {
 
 > **安装：**
 
-```text
-npm i @commitlint/cli @commitlint/config-conventional -D
+```bash
+pnpm install @commitlint/cli @commitlint/config-conventional -D
 ```
 
 > **配置命令（在.husky 文件夹下添加 commit-msg 文件）：**
 
-```text
+```bash
 npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 ```
 
 ### 4、commitizen（基于 Node.js 的 git commit 命令行工具，生成标准化的 message）
 
-```text
-// 安装 commitizen，如此一来可以快速使用 cz 或 git cz 命令进行启动。
-npm install commitizen -D
+```bash
+// 安装 czg，如此一来可以快速使用 czg 命令进行启动。
+pnpm install czg -D
 ```
 
 ### 5、cz-git
 
 > **指定提交文字规范，一款工程性更强，高度自定义，标准输出格式的 commitizen 适配器**
 
-```text
-npm install cz-git -D
+```bash
+pnpm install cz-git -D
 ```
 
 > **配置 package.json：**
 
-```text
+```bash
 "config": {
   "commitizen": {
     "path": "node_modules/cz-git"
@@ -396,8 +397,15 @@ npm install cz-git -D
 
 ```javascript
 // @see: https://cz-git.qbenben.com/zh/guide
-/** @type {import('cz-git').UserConfig} */
+const fs = require("fs");
+const path = require("path");
 
+const scopes = fs
+	.readdirSync(path.resolve(__dirname, "src"), { withFileTypes: true })
+	.filter((dirent) => dirent.isDirectory())
+	.map((dirent) => dirent.name.replace(/s$/, ""));
+
+/** @type {import('cz-git').UserConfig} */
 module.exports = {
 	ignores: [(commit) => commit.includes("init")],
 	extends: ["@commitlint/config-conventional"],
@@ -513,49 +521,43 @@ module.exports = {
 				name: "revert:   ⏪️  Reverts a previous commit",
 				emoji: "⏪️",
 			},
+			{
+				value: "wip",
+				name: "wip:      🕔  work in process",
+				emoji: "🕔",
+			},
+			{
+				value: "workflow",
+				name: "workflow: 📋  workflow improvements",
+				emoji: "📋",
+			},
+			{
+				value: "type",
+				name: "type:     🔰  type definition file changes",
+				emoji: "🔰",
+			},
 			// 中文版
-			// { value: "特性", name: "特性:   🚀  新增功能", emoji: "🚀" },
-			// { value: "修复", name: "修复:   🧩  修复缺陷", emoji: "🧩" },
-			// { value: "文档", name: "文档:   📚  文档变更", emoji: "📚" },
-			// { value: "格式", name: "格式:   🎨  代码格式（不影响功能，例如空格、分号等格式修正）", emoji: "🎨" },
-			// { value: "重构", name: "重构:   ♻️  代码重构（不包括 bug 修复、功能新增）", emoji: "♻️" },
-			// { value: "性能", name: "性能:   ⚡️  性能优化", emoji: "⚡️" },
-			// { value: "测试", name: "测试:   ✅  添加疏漏测试或已有测试改动", emoji: "✅" },
-			// { value: "构建", name: "构建:   📦️  构建流程、外部依赖变更（如升级 npm 包、修改 webpack 配置等）", emoji: "📦️" },
-			// { value: "集成", name: "集成:   🎡  修改 CI 配置、脚本", emoji: "🎡" },
-			// { value: "回退", name: "回退:   ⏪️  回滚 commit", emoji: "⏪️" },
-			// { value: "其他", name: "其他:   🔨  对构建过程或辅助工具和库的更改（不影响源文件、测试用例）", emoji: "🔨" }
+			// { value: "feat", name: "特性:   🚀  新增功能", emoji: "🚀" },
+			// { value: "fix", name: "修复:   🧩  修复缺陷", emoji: "🧩" },
+			// { value: "docs", name: "文档:   📚  文档变更", emoji: "📚" },
+			// { value: "style", name: "格式:   🎨  代码格式（不影响功能，例如空格、分号等格式修正）", emoji: "🎨" },
+			// { value: "refactor", name: "重构:   ♻️  代码重构（不包括 bug 修复、功能新增）", emoji: "♻️" },
+			// { value: "perf", name: "性能:    ⚡️  性能优化", emoji: "⚡️" },
+			// { value: "test", name: "测试:   ✅  添加疏漏测试或已有测试改动", emoji: "✅" },
+			// { value: "build", name: "构建:   📦️  构建流程、外部依赖变更（如升级 npm 包、修改 webpack 配置等）", emoji: "📦️" },
+			// { value: "ci", name: "集成:   🎡  修改 CI 配置、脚本", emoji: "🎡" },
+			// { value: "chore", name: "回退:   ⏪️  回滚 commit", emoji: "⏪️" },
+			// { value: "revert", name: "其他:   🔨  对构建过程或辅助工具和库的更改（不影响源文件、测试用例）", emoji: "🔨" },
+			// { value: "wip", name: "开发:   🕔  正在开发中", emoji: "🕔" },
+			// { value: "workflow", name: "工作流:   📋  工作流程改进", emoji: "📋" },
+			// { value: "types", name: "类型:   🔰  类型定义文件修改", emoji: "🔰" }
 		],
 		useEmoji: true,
-		themeColorCode: "",
-		scopes: [],
-		allowCustomScopes: true,
-		allowEmptyScopes: true,
+		scopes: [...scopes],
 		customScopesAlign: "bottom",
-		customScopesAlias: "custom",
 		emptyScopesAlias: "empty",
-		upperCaseSubject: false,
+		customScopesAlias: "custom",
 		allowBreakingChanges: ["feat", "fix"],
-		breaklineNumber: 100,
-		breaklineChar: "|",
-		skipQuestions: [],
-		issuePrefixs: [
-			{ value: "closed", name: "closed:   ISSUES has been processed" },
-		],
-		customIssuePrefixsAlign: "top",
-		emptyIssuePrefixsAlias: "skip",
-		customIssuePrefixsAlias: "custom",
-		allowCustomIssuePrefixs: true,
-		allowEmptyIssuePrefixs: true,
-		confirmColorize: true,
-		maxHeaderLength: Infinity,
-		maxSubjectLength: Infinity,
-		minSubjectLength: 0,
-		scopeOverrides: undefined,
-		defaultBody: "",
-		defaultIssues: "",
-		defaultScope: "",
-		defaultSubject: "",
 	},
 };
 ```
@@ -565,19 +567,34 @@ module.exports = {
 ```json
 {
 	"scripts": {
+		// 本地运行(dev环境)
 		"dev": "vite",
+		// 本地运行(dev环境)
 		"serve": "vite",
-		"build:dev": "vue-tsc --noEmit && vite build --mode development",
-		"build:test": "vue-tsc --noEmit && vite build --mode test",
-		"build:pro": "vue-tsc --noEmit && vite build --mode production",
-		"preview": "vite preview",
+		// 构建打包(dev环境)
+		"build:dev": "vue-tsc && vite build --mode development",
+		// 构建打包(test环境)
+		"build:test": "vue-tsc && vite build --mode test",
+		// 构建打包(pro环境)
+		"build:pro": "vue-tsc && vite build --mode production",
+		// 检查项目 ts 类型
+		"type:check": "vue-tsc --noEmit --skipLibCheck",
+		// 本地环境预览构建后的 dist
+		"preview": "npm run build:dev && vite preview",
+		// 执行 eslint 校验
 		"lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
-		"lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
+		// 执行 prettier 格式化
+		"lint:prettier": "prettier --write \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
+		// 执行 stylelint 格式化
 		"lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+		// 执行 lint-staged.config.js 文件下的命令
 		"lint:lint-staged": "lint-staged",
+		// 初始化 husky 配置
 		"prepare": "husky install",
+		// 自动更新版本
 		"release": "standard-version",
-		"commit": "git pull && git add -A && git-cz && git push"
+		// 提交代码(可自定义配置执行命令)
+		"commit": "git add -A && czg && git push"
 	}
 }
 ```

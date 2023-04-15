@@ -1,19 +1,19 @@
 # 网络请求
 
-作者封装了`Axios`来做网络请求，包括全局 Loading、错误处理、取消请求等。
-你可以按照你自己喜欢的方式来自行封装。
+- 项目封装了`Axios`来做网络请求，包括请求 Loading、错误处理、取消请求等功能
+- 可以按照自己项目需求来进行封装
 
 ## 目录结构
 
-```bash
-├─ api							# 网络请求文件夹
-├ ├─config						# 网络请求相关配置 e.p：公共URL前缀
-├ ├─helper						# 辅助函数：错误处理、取消请求
-├ ├ ├─axiosCancel.ts			# 取消请求
-├ ├ ├─checkStatus.ts			# 检查请求返回的状态
-├ ├─interface					# api接口的请求参数和返回数据的类型定义文件夹
-├ ├─modules						# 请求函数模块，强烈建议根据不同的模块创建不同的请求文件。
-├ └─index.ts					# 封装后的axios
+```txt
+├─ api                       # 网络请求文件夹
+├ ├─config                   # 网络请求相关配置 e.p：公共URL前缀
+├ ├─helper                   # 辅助函数：错误处理、取消请求
+├ ├ ├─axiosCancel.ts         # 取消请求
+├ ├ ├─checkStatus.ts         # 检查请求返回的状态
+├ ├─interface                # api接口的请求参数和返回数据的类型定义文件夹
+├ ├─modules                  # 请求函数模块，强烈建议根据不同的模块创建不同的请求文件
+├ └─index.ts                 # 封装后的axios
 └─
 ```
 
@@ -72,45 +72,46 @@ this.service.interceptors.request.use(
 
 代码位置：`index.ts 50:87`
 
-```ts
-    /**
-     * @description 响应拦截器
-     *  服务器换返回信息 -> [拦截统一处理] -> 客户端JS获取到信息
-     */
-    this.service.interceptors.response.use(
-      (response: AxiosResponse) => {
-        const { data } = response;
-        const userStore = useUserStore();
-        tryHideFullScreenLoading();
-        // 登陆失效
-        if (data.code == ResultEnum.OVERDUE) {
-          userStore.setToken("");
-          router.replace(LOGIN_URL);
-          ElMessage.error(data.msg);
-          return Promise.reject(data);
-        }
-        // 全局错误信息拦截（防止下载文件的时候返回数据流，没有 code 直接报错）
-        if (data.code && data.code !== ResultEnum.SUCCESS) {
-          ElMessage.error(data.msg);
-          return Promise.reject(data);
-        }
-        // 成功请求（在页面上除非特殊情况，否则不用处理失败逻辑）
-        return data;
-      },
-      async (error: AxiosError) => {
-        const { response } = error;
-        tryHideFullScreenLoading();
-        // 请求超时 && 网络错误单独判断，没有 response
-        if (error.message.indexOf("timeout") !== -1) ElMessage.error("请求超时！请您稍后重试");
-        if (error.message.indexOf("Network Error") !== -1) ElMessage.error("网络错误！请您稍后重试");
-        // 根据服务器响应的错误状态码，做不同的处理
-        if (response) checkStatus(response.status);
-        // 服务器结果都没有返回(可能服务器错误可能客户端断网)，断网处理:可以跳转到断网页面
-        if (!window.navigator.onLine) router.replace("/500");
-        return Promise.reject(error);
-      }
-    );
-  }
+```typescript
+/**
+ * @description 响应拦截器
+ *  服务器换返回信息 -> [拦截统一处理] -> 客户端JS获取到信息
+ */
+this.service.interceptors.response.use(
+	(response: AxiosResponse) => {
+		const { data } = response;
+		const userStore = useUserStore();
+		tryHideFullScreenLoading();
+		// 登陆失效
+		if (data.code == ResultEnum.OVERDUE) {
+			userStore.setToken("");
+			router.replace(LOGIN_URL);
+			ElMessage.error(data.msg);
+			return Promise.reject(data);
+		}
+		// 全局错误信息拦截（防止下载文件的时候返回数据流，没有 code 直接报错）
+		if (data.code && data.code !== ResultEnum.SUCCESS) {
+			ElMessage.error(data.msg);
+			return Promise.reject(data);
+		}
+		// 成功请求（在页面上除非特殊情况，否则不用处理失败逻辑）
+		return data;
+	},
+	async (error: AxiosError) => {
+		const { response } = error;
+		tryHideFullScreenLoading();
+		// 请求超时 && 网络错误单独判断，没有 response
+		if (error.message.indexOf("timeout") !== -1)
+			ElMessage.error("请求超时！请您稍后重试");
+		if (error.message.indexOf("Network Error") !== -1)
+			ElMessage.error("网络错误！请您稍后重试");
+		// 根据服务器响应的错误状态码，做不同的处理
+		if (response) checkStatus(response.status);
+		// 服务器结果都没有返回(可能服务器错误可能客户端断网)，断网处理:可以跳转到断网页面
+		if (!window.navigator.onLine) router.replace("/500");
+		return Promise.reject(error);
+	}
+);
 ```
 
 在获取到接口的响应后，不管成功或失败，先尝试关闭全局 loading`tryHideFullScreenLoading`，然后根据成功或失败做不同的处理。

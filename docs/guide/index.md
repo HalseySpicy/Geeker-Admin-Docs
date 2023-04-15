@@ -4,11 +4,11 @@
 
 ## 环境准备
 
-本地环境需要安装 [Node.js](https://nodejs.org/en/) 和 [Git](https://git-scm.com/)
+本地环境需要安装 [Node.js 16.x+](https://nodejs.org/en/)、[pnpm 7.x+](https://github.com/pnpm/pnpm/)、[Git](https://git-scm.com/)
 :::warning
 Node.js 版本推荐安装 **16+** 以上，版本过低依赖包可能安装失败。
 
-默认使用 npm 作为安装依赖包工具，使用 yarn、pnpm 可能会安装到最新版依赖。
+默认使用 pnpm 作为安装依赖包工具，使用 yarn、npm 没有 lock 可能会安装到最新版依赖。
 :::
 
 ## 工具配置
@@ -70,57 +70,54 @@ git clone https://gitee.com/laramie/Geeker-Admin.git
 git clone https://github.com/HalseySpicy/Geeker-Admin.git
 ```
 
-## 安装使用步骤 📚
+## 安装使用步骤
 
 ### 安装依赖：
 
 ```bash
-# 使用 npm
-npm install
-
-# npm install 安装失败，请升级 nodejs 到 16 以上，或尝试使用以下命令：
-npm install --registry=https://registry.npm.taobao.org
+# 使用 pnpm
+pnpm install
 ```
 
 ### 运行项目：
 
 ```bash
-# 以下两个命令都行
-npm run dev
-npm run serve
+# 以下两个命令都可以
+pnpm dev
+pnpm serve
 ```
 
 ### 打包项目：
 
 ```bash
 # 开发环境
-npm run build:dev
+pnpm build:dev
 
 # 测试环境
-npm run build:test
+pnpm build:test
 
 # 生产环境
-npm run build:pro
+pnpm build:pro
 ```
 
 ### 校验、格式化代码：
 
 ```bash
 # eslint 检测代码
-npm run lint:eslint
+pnpm lint:eslint
 
 # prettier 格式化代码
-npm run lint:prettier
+pnpm lint:prettier
 
 # stylelint 格式化样式
-npm run lint:stylelint
+pnpm lint:stylelint
 ```
 
 ### 提交代码：
 
 ```bash
 # 提交代码（提交前会自动执行 lint:lint-staged 命令）
-npm run commit
+pnpm commit
 ```
 
 ## npm script 详解
@@ -133,17 +130,19 @@ npm run commit
 		// 本地运行(dev环境)
 		"serve": "vite",
 		// 构建打包(dev环境)
-		"build:dev": "vue-tsc --noEmit && vite build --mode development",
+		"build:dev": "vue-tsc && vite build --mode development",
 		// 构建打包(test环境)
-		"build:test": "vue-tsc --noEmit && vite build --mode test",
+		"build:test": "vue-tsc && vite build --mode test",
 		// 构建打包(pro环境)
-		"build:pro": "vue-tsc --noEmit && vite build --mode production",
+		"build:pro": "vue-tsc && vite build --mode production",
+		// 检查项目 ts 类型
+		"type:check": "vue-tsc --noEmit --skipLibCheck",
 		// 本地环境预览构建后的 dist
-		"preview": "vite preview",
+		"preview": "npm run build:dev && vite preview",
 		// 执行 eslint 校验
 		"lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
 		// 执行 prettier 格式化
-		"lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
+		"lint:prettier": "prettier --write \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
 		// 执行 stylelint 格式化
 		"lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
 		// 执行 lint-staged.config.js 文件下的命令
@@ -153,7 +152,7 @@ npm run commit
 		// 自动更新版本
 		"release": "standard-version",
 		// 提交代码(可自定义配置执行命令)
-		"commit": "git pull && git add -A && git-cz && git push"
+		"commit": "git add -A && czg && git push"
 	}
 }
 ```

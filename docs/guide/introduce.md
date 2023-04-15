@@ -6,30 +6,30 @@
 
 ## 文档
 
-- 中文文档地址为 [Geeker-Admin-Docs](https://github.com/HalseySpicy/Geeker-Admin-Docs)，采用 [VitePress](https://vitepress.vuejs.org/) 开发。
+- 中文文档源码在 [Geeker-Admin-Docs](https://github.com/HalseySpicy/Geeker-Admin-Docs)，采用 [VitePress](https://vitepress.vuejs.org/) 开发。
 - 如发现文档有误，欢迎提交 [Pull requests](https://github.com/HalseySpicy/Geeker-Admin-Docs/pulls) 帮助我们改进。
 
 ### 本地运行文档
 
 - 如果需要本地运行文档，只需要将文档拉取到本地进行运行即可。
 
-```text
+```bash
 # 拉取代码
 git clone https://github.com/HalseySpicy/Geeker-Admin-Docs.git
 
 # 安装依赖
-npm install
+pnpm install
 
 # 运行文档
-npm run docs:dev
+pnpm docs:dev
 
 # 打包文档
-npm run docs:build
+pnpm docs:build
 ```
 
 ## 需要掌握的基础知识
 
-- 本项目基于 Vue3.2、Vite3、TS、Pinia、Element-Plus 开发，并全部采用了 Vue3.2 的单文件组件 `＜script setup＞` 写法。
+- 本项目基于 Vue3.2、Vite4、TS、Pinia、Element-Plus 开发，并全部采用了 Vue3.2 的单文件组件 `＜script setup＞` 写法。
 
 - 建议您在开发前先学习以下内容，提前了解和学习这些知识，会对项目理解非常有帮助：
   - [Vue3 文档](https://cn.vuejs.org/guide/introduction.html)

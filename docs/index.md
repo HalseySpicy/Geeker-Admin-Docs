@@ -7,7 +7,7 @@ titleTemplate: 一款简单易用的中后台模版
 hero:
   name: Geeker-Admin
   text: 简单易用的中后台模版
-  tagline: 基于 Vue3.2 + Vite3 + TS + Pinia + Element-Plus
+  tagline: 基于 Vue3.2 + Vite4 + TS + Pinia + Element-Plus
   actions:
     - theme: brand
       text: 快速上手
@@ -23,7 +23,7 @@ hero:
 features:
   - icon: 🔥
     title: 最新流行技术栈
-    details: 基于 Vue3.2、Vite3、TS、Pinia、Element-Plus 等最新技术栈开发
+    details: 基于 Vue3.2、Vite4、TS、Pinia、Element-Plus 等最新技术栈开发
   - icon: ✨
     title: 简单易上手
     details: 项目代码没有过度封装，代码简单、易读，提供可靠的项目文档

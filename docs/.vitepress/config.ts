@@ -67,10 +67,10 @@ export default {
 						{ text: "快速上手", link: "/guide/" },
 						{ text: "目录结构", link: "/guide/catalogue" },
 						{ text: "项目配置", link: "/guide/configure" },
-						{ text: "布局", link: "/guide/layout" },
 						{ text: "路由、菜单", link: "/guide/router" },
-						{ text: "权限", link: "/guide/auth" },
+						{ text: "权限管理", link: "/guide/auth" },
 						{ text: "网络请求", link: "/guide/request" },
+						{ text: "构建、部署", link: "/guide/build" },
 					],
 				},
 				{
@@ -79,6 +79,7 @@ export default {
 					items: [
 						{ text: "项目规范", link: "/guide/standard" },
 						{ text: "主题配置", link: "/guide/theme" },
+						{ text: "布局模式", link: "/guide/layout" },
 					],
 				},
 				{
