@@ -48,7 +48,7 @@ export default {
 				text: "相关链接",
 				items: [
 					{ text: "预览地址", link: "https://admin.spicyboy.cn/" },
-					{ text: "Gitee 源码", link: "https://gitee.com/laramie/Geeker-Admin" },
+					{ text: "Gitee 源码", link: "https://gitee.com/HalseySpicy/Geeker-Admin" },
 					{ text: "GitHub 源码", link: "https://github.com/HalseySpicy/Geeker-Admin" },
 					{ text: "文档源码", link: "https://github.com/HalseySpicy/Geeker-Admin-Docs" },
 					{ text: "更新日志", link: "https://github.com/HalseySpicy/Geeker-Admin/blob/master/CHANGELOG.md" },

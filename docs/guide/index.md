@@ -60,7 +60,7 @@ Node.js 版本推荐安装 **16+** 以上，版本过低依赖包可能安装失
 
 ```bash
 # 克隆代码
-git clone https://gitee.com/laramie/Geeker-Admin.git
+git clone https://gitee.com/HalseySpicy/Geeker-Admin.git
 ```
 
 ### 从 GitHub 拉取代码：
