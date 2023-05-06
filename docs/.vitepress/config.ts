@@ -66,7 +66,6 @@ export default {
 						{ text: "介绍", link: "/guide/introduce" },
 						{ text: "快速上手", link: "/guide/" },
 						{ text: "目录结构", link: "/guide/catalogue" },
-						{ text: "项目配置", link: "/guide/configure" },
 						{ text: "路由、菜单", link: "/guide/router" },
 						{ text: "权限管理", link: "/guide/auth" },
 						{ text: "网络请求", link: "/guide/request" },

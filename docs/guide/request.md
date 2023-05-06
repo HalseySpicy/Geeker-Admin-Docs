@@ -66,7 +66,7 @@ this.service.interceptors.request.use(
 );
 ```
 
-在请求之前检查当前请求需不需要全局的 loading，并且在 header 请求头中携带`x-access-token`。这个 token 名称要根据实际情况，不一定叫`x-access-token`。要跟后端确认一下。而且 token 也不一定是放在 header 里面，具体情况要看你们自己。
+- 在请求之前检查当前请求需不需要全局的 loading，并且在 header 请求头中携带`x-access-token`。这个 token 名称要根据实际情况，不一定叫`x-access-token`，可以跟后端确认一下。而且 token 也不一定是放在 header 里面，具体情况根据自己项目配置。
 
 ## 响应拦截
 
@@ -101,10 +101,8 @@ this.service.interceptors.response.use(
 		const { response } = error;
 		tryHideFullScreenLoading();
 		// 请求超时 && 网络错误单独判断，没有 response
-		if (error.message.indexOf("timeout") !== -1)
-			ElMessage.error("请求超时！请您稍后重试");
-		if (error.message.indexOf("Network Error") !== -1)
-			ElMessage.error("网络错误！请您稍后重试");
+		if (error.message.indexOf("timeout") !== -1) ElMessage.error("请求超时！请您稍后重试");
+		if (error.message.indexOf("Network Error") !== -1) ElMessage.error("网络错误！请您稍后重试");
 		// 根据服务器响应的错误状态码，做不同的处理
 		if (response) checkStatus(response.status);
 		// 服务器结果都没有返回(可能服务器错误可能客户端断网)，断网处理:可以跳转到断网页面
@@ -114,19 +112,20 @@ this.service.interceptors.response.use(
 );
 ```
 
-在获取到接口的响应后，不管成功或失败，先尝试关闭全局 loading`tryHideFullScreenLoading`，然后根据成功或失败做不同的处理。
+- 在获取到接口的响应后，不管成功或失败，先尝试关闭全局 loading`tryHideFullScreenLoading`，然后根据成功或失败做不同的处理。
 
 :::warning 注意
 这里的请求成功指的是**网络请求**，不是**业务逻辑**成功。
 :::
-请求成功后会判断接口返回的响应数据里的 code。根据不同的 code 做不同的处理。
-这里要注意`ResultEnum`中定义的 code 是不是跟你业务上的 code 一样。
 
-请求失败也是一样，只不过这里的失败是指网络失败。网络请求失败后服务器返回的状态码都是有迹可循的，只需要根据不同的状态码，做不同的处理。这就是`checkStatus`的工作。
+- 请求成功后会判断接口返回的响应数据里的 code。根据不同的 code 做不同的处理。
+  这里要注意`ResultEnum`中定义的 code 是不是跟你业务上的 code 一样。
+
+- 请求失败也是一样，只不过这里的失败是指网络失败。网络请求失败后服务器返回的状态码都是有迹可循的，只需要根据不同的状态码，做不同的处理。这就是`checkStatus`的工作。
 
 ## 示例
 
-我现在要写一个登录接口。
+> 现在要写一个登录接口
 
 1. api->modules 中新建一个`login.ts`文件。
 2. 在`login.ts`中引入封装后的 axios。
@@ -176,13 +175,3 @@ const login = async () => {
 	// 保存token，跳转页面等操作
 };
 ```
-
-## 主要维护者
-
-<script setup> 
-const contributor = [
-	{src:'https://avatars.githubusercontent.com/u/51069636?v=4',link:'https://github.com/HalseySpicy'},
-  {src:'https://avatars.githubusercontent.com/u/46669447?v=4',link:'https://github.com/denganjia'}
-]
-</script>
-<Avatar v-for="user in contributor" :src="user.src" :link="user.link"/>

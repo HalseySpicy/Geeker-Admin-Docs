@@ -115,11 +115,7 @@ module.exports = {
 		},
 	},
 	// 继承某些已有的规则
-	extends: [
-		"plugin:vue/vue3-recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:prettier/recommended",
-	],
+	extends: ["plugin:vue/vue3-recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
 	/**
 	 * "off" 或 0    ==>  关闭规则
 	 * "warn" 或 1   ==>  打开的规则作为警告（不影响代码执行）
@@ -172,7 +168,7 @@ module.exports = {
 ### 1、下载 StyleLint 相关依赖：
 
 ```bash
-pnpm install stylelint stylelint-config-html stylelint-config-recommended-scss stylelint-config-recommended-vue stylelint-config-standard stylelint-config-standard-scss stylelint-config-recess-order postcss postcss-html stylelint-config-prettier -D
+pnpm install stylelint stylelint-config-html stylelint-config-recommended-scss stylelint-config-recommended-vue stylelint-config-standard stylelint-config-standard-scss stylelint-config-recess-order postcss postcss-html -D
 ```
 
 |               依赖                |                                                                     作用描述                                                                     |
@@ -184,7 +180,6 @@ pnpm install stylelint stylelint-config-html stylelint-config-recommended-scss s
 |     stylelint-config-standard     | 打开额外的规则来执行在规范和一些 CSS 样式指南中发现的通用约定，包括：惯用 CSS 原则，谷歌的 CSS 样式指南，Airbnb 的样式指南，和 @mdo 的代码指南。 |
 |  stylelint-config-standard-scss   |                                          扩展 stylelint-config-standard 共享配置，并为 SCSS 配置其规则                                           |
 |   stylelint-config-recess-order   |                                                               属性的排序（插件包）                                                               |
-|     stylelint-config-prettier     |                                                   关闭所有不必要的或可能与 Prettier 冲突的规则                                                   |
 |              postcss              |                                                              postcss-html 的依赖包                                                               |
 |           postcss-html            |                                                   用于解析 HTML（和类似 HTML）的 PostCSS 语法                                                    |
 
@@ -201,15 +196,7 @@ pnpm install stylelint stylelint-config-html stylelint-config-recommended-scss s
 		"source.fixAll.stylelint": true
 	},
 	"stylelint.enable": true,
-	"stylelint.validate": [
-		"css",
-		"less",
-		"postcss",
-		"scss",
-		"vue",
-		"sass",
-		"html"
-	],
+	"stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass", "html"],
 	"files.eol": "\n"
 }
 ```
@@ -230,7 +217,6 @@ module.exports = {
 		"stylelint-config-standard-scss", // 配置 stylelint scss 插件
 		"stylelint-config-recommended-vue/scss", // 配置 vue 中 scss 样式格式化
 		"stylelint-config-recess-order", // 配置 stylelint css 属性书写顺序插件,
-		"stylelint-config-prettier", // 配置 stylelint 和 prettier 兼容
 	],
 	overrides: [
 		// 扫描 .vue/html 文件中的 <style> 标签内的样式
@@ -241,12 +227,8 @@ module.exports = {
 	],
 	rules: {
 		"function-url-quotes": "always", // URL 的引号 "always(必须加上引号)"|"never(没有引号)"
-		"string-quotes": "double", // 指定字符串使用单引号或双引号 "single(单引号)"|"double(双引号)"
-		"unit-case": "lower", // 指定单位的大小写 "lower(全小写)"|"upper(全大写)"
-		"color-hex-case": "lower", // 指定 16 进制颜色的大小写 "lower(全小写)"|"upper(全大写)"
 		"color-hex-length": "long", // 指定 16 进制颜色的简写或扩写 "short(16进制简写)"|"long(16进制扩写)"
 		"rule-empty-line-before": "never", // 要求或禁止在规则之前的空行 "always(规则之前必须始终有一个空行)"|"never(规则前绝不能有空行)"|"always-multi-line(多行规则之前必须始终有一个空行)"|"never-multi-line(多行规则之前绝不能有空行)"
-		"block-opening-brace-space-before": "always", // 要求在块的开大括号之前必须有一个空格或不能有空白符 "always(大括号前必须始终有一个空格)"|"never(左大括号之前绝不能有空格)"|"always-single-line(在单行块中的左大括号之前必须始终有一个空格)"|"never-single-line(在单行块中的左大括号之前绝不能有空格)"|"always-multi-line(在多行块中，左大括号之前必须始终有一个空格)"|"never-multi-line(多行块中的左大括号之前绝不能有空格)"
 		"font-family-no-missing-generic-family-keyword": null, // 禁止在字体族名称列表中缺少通用字体族关键字
 		"scss/at-import-partial-extension": null, // 解决不能使用 @import 引入 scss 文件
 		"property-no-unknown": null, // 禁止未知的属性
@@ -417,27 +399,7 @@ module.exports = {
 		"subject-empty": [2, "never"],
 		"type-empty": [2, "never"],
 		"subject-case": [0],
-		"type-enum": [
-			2,
-			"always",
-			[
-				"feat",
-				"fix",
-				"docs",
-				"style",
-				"refactor",
-				"perf",
-				"test",
-				"build",
-				"ci",
-				"chore",
-				"revert",
-				"wip",
-				"workflow",
-				"types",
-				"release",
-			],
-		],
+		"type-enum": [2, "always", ["feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert", "wip", "workflow", "types", "release"]],
 	},
 	prompt: {
 		messages: {
@@ -446,10 +408,8 @@ module.exports = {
 			customScope: "Denote the SCOPE of this change:",
 			subject: "Write a SHORT, IMPERATIVE tense description of the change:\n",
 			body: 'Provide a LONGER description of the change (optional). Use "|" to break new line:\n',
-			breaking:
-				'List any BREAKING CHANGES (optional). Use "|" to break new line:\n',
-			footerPrefixsSelect:
-				"Select the ISSUES type of changeList by this change (optional):",
+			breaking: 'List any BREAKING CHANGES (optional). Use "|" to break new line:\n',
+			footerPrefixsSelect: "Select the ISSUES type of changeList by this change (optional):",
 			customFooterPrefixs: "Input ISSUES prefix:",
 			footer: "List any ISSUES by this change. E.g.: #31, #34:\n",
 			confirmCommit: "Are you sure you want to proceed with the commit above?",
