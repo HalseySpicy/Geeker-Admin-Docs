@@ -2,7 +2,7 @@
 
 ## 简介
 
-[Geeker Admin](https://github.com/HalseySpicy/Geeker-Admin) 一款基于 Vue3.2、TypeScript、Vite3、Pinia、Element-Plus 开源的后台管理框架，使用目前最新技术栈开发。项目提供强大的 [ProTable](../components/proTable.md) 组件，在一定程度上节省您的开发效率。另外本项目还封装了一些常用组件、hooks、指令、动态路由、按钮级别权限控制等功能。
+[Geeker Admin](https://github.com/HalseySpicy/Geeker-Admin) 一款基于 Vue3.3、TypeScript、Vite3、Pinia、Element-Plus 开源的后台管理框架，使用目前最新技术栈开发。项目提供强大的 [ProTable](../components/proTable.md) 组件，在一定程度上节省您的开发效率。另外本项目还封装了一些常用组件、hooks、指令、动态路由、按钮级别权限控制等功能。
 
 ## 文档
 
@@ -29,7 +29,7 @@ pnpm docs:build
 
 ## 需要掌握的基础知识
 
-- 本项目基于 Vue3.2、Vite4、TS、Pinia、Element-Plus 开发，并全部采用了 Vue3.2 的单文件组件 `＜script setup＞` 写法。
+- 本项目基于 Vue3.3、Vite4、TS、Pinia、Element-Plus 开发，并全部采用了的单文件组件 `＜script setup＞` 写法。
 
 - 建议您在开发前先学习以下内容，提前了解和学习这些知识，会对项目理解非常有帮助：
   - [Vue3 文档](https://cn.vuejs.org/guide/introduction.html)

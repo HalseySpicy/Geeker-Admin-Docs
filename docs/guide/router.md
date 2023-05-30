@@ -61,7 +61,7 @@ interface RouteRecordRaw {
 ## 路由实现
 
 - 默认根据后端接口返回的数据生成动态路由
-- 如果想把路由变成本地，直接更改 [src/api/modules/login.ts](https://github.com/HalseySpicy/Geeker-Admin/blob/master/src/api/modules/login.ts) => getAuthMenuListApi 方法
+- 如果想把路由变成本地，直接更改 [src/api/modules/login.ts => getAuthMenuListApi](https://github.com/HalseySpicy/Geeker-Admin/blob/master/src/api/modules/login.ts) 方法
 
 ```typescript
 import authMenuList from "@/assets/json/authMenuList.json";

@@ -24,7 +24,9 @@ export default {
 			text: "为此页提供修改建议",
 			pattern: "https://github.com/HalseySpicy/Geeker-Admin-Docs",
 		},
-		socialLinks: [{ icon: "github", link: "https://github.com/HalseySpicy/Geeker-Admin" }],
+		socialLinks: [
+			{ icon: "github", link: "https://github.com/HalseySpicy/Geeker-Admin" }
+		],
 		footer: {
 			message: "MIT License.",
 			copyright: "Copyright © 2022 Geeker-Admin",

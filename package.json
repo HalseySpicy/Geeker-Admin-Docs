@@ -17,10 +17,10 @@
 	"devDependencies": {
 		"@types/node": "^18.15.11",
 		"markdown-it-custom-attrs": "^1.0.2",
-		"sass": "^1.61.0",
+		"sass": "^1.62.1",
 		"typescript": "^5.0.4",
-		"vite": "^4.3.5",
-		"vitepress": "1.0.0-alpha.75",
-		"vue": "^3.2.47"
+		"vite": "^4.3.9",
+		"vitepress": "1.0.0-beta.1",
+		"vue": "^3.3.4"
 	}
 }

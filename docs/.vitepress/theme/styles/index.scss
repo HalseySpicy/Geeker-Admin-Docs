@@ -10,6 +10,12 @@
 
 .VPHome {
 	padding-bottom: 80px !important;
+	.image-bg {
+		background-image: linear-gradient(-45deg, #afbcec 50%, #81e6c4 50%);
+		filter: blur(70px);
+		width: 256px;
+		height: 256px;
+	}
 }
 
 // 暗黑模式样式
