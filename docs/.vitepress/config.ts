@@ -24,9 +24,7 @@ export default {
 			text: "为此页提供修改建议",
 			pattern: "https://github.com/HalseySpicy/Geeker-Admin-Docs",
 		},
-		socialLinks: [
-			{ icon: "github", link: "https://github.com/HalseySpicy/Geeker-Admin" }
-		],
+		socialLinks: [{ icon: "github", link: "https://github.com/HalseySpicy/Geeker-Admin" }],
 		footer: {
 			message: "MIT License.",
 			copyright: "Copyright © 2022 Geeker-Admin",
@@ -57,6 +55,13 @@ export default {
 				],
 			},
 			{ text: "🍵 赞助", link: "/sponsor/index" },
+			{
+				text: "语言",
+				items: [
+					{ text: "中国語（簡体字）", link: "https://docs.spicyboy.cn" },
+					{ text: "日本語", link: "http://ja.spicyboy.surge.sh" },
+				],
+			},
 		],
 
 		sidebar: {

@@ -1,157 +1,140 @@
-# 快速上手
+# クイックスタート
 
-本文会帮助你从头启动、搭建此项目
+このドキュメンテーションでは、ソースコードのクローンから開発、ビルド、デプロイまでの基本的な操作を説明します。
 
-## 环境准备
+## 環境準備
 
-本地环境需要安装 [Node.js 16.x+](https://nodejs.org/en/)、[pnpm 7.x+](https://github.com/pnpm/pnpm/)、[Git](https://git-scm.com/)
+開発のため Node.js 16.x+、pnpm 7.x+、Git が必要です。
 :::warning
-Node.js 版本推荐安装 **16+** 以上，版本过低依赖包可能安装失败。
 
-默认使用 pnpm 作为安装依赖包工具，使用 yarn、npm 没有 lock 可能会安装到最新版依赖。
-:::
+- Node.js のバージョンは **16+** を推奨します、バージョンが低すぎると依存パッケージのインストールが失敗する可能性があります。
 
-## 工具配置
+- デフォルトでは、依存パッケージのインストールツールとして pnpm を使用します。yarn や npm を使用すると、ロックがないため最新バージョンの依存関係がインストールされる可能性があります。
+  :::
 
-本项目推荐使用 VSCode 进行开发，项目里面已内置 VSCode 配置，包含推荐的插件和设置。
+## 開発ツール設定
+
+このプロジェクトでは、VSCode を開発に推奨します。プロジェクトにはすでに VSCode の設定が組み込まれており、推奨するプラグインと設定が含まれています。
 
 > 🌈 推荐安装以下插件：
 
-- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) ==> Vue3 官方插件
-- [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) ==> Vue3 官方插件（TypeScript）
-- [Vue 3 Snippets](https://marketplace.visualstudio.com/items?itemName=hollowtree.vue-snippets) ==> Vue3 代码提示
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) ==> 代码检查
-- [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) ==> CSS 代码检查 && 格式化
-- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) ==> 代码格式化
-- [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) ==> 统一不同编辑器的编码风格
-- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) ==> 校验单词拼写错误
-- [Sass](https://marketplace.visualstudio.com/items?itemName=Syler.sass-indented) ==> Sass 样式编写
-- [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv) ==> 高亮 .env 文件
+- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) ==> Vue3 公式プラグイン
+- [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) ==> Vue3 公式プラグイン（TypeScript）
+- [Vue 3 Snippets](https://marketplace.visualstudio.com/items?itemName=hollowtree.vue-snippets) ==> Vue3 スニペット
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) ==> コードチェック
+- [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) ==> CSS チェック && フォーマット
+- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) ==> コードフォーマット
+- [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) ==> コーディングスタイルを統一
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) ==> 単語のスペルミスをチェック
+- [Sass](https://marketplace.visualstudio.com/items?itemName=Syler.sass-indented) ==> Sass 作成
+- [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv) ==> .env のハイライト表示
 
 ### .vscode > extensions.json
 
 ```json
 {
-	"recommendations": [
-		"vue.volar",
-		"vue.vscode-typescript-vue-plugin",
-		"hollowtree.vue-snippets",
-		"dbaeumer.vscode-eslint",
-		"stylelint.vscode-stylelint",
-		"esbenp.prettier-vscode",
-		"editorconfig.editorconfig",
-		"streetsidesoftware.code-spell-checker",
-		"syler.sass-indented",
-		"mikestead.dotenv"
-	]
+	"recommendations": ["vue.volar", "vue.vscode-typescript-vue-plugin", "hollowtree.vue-snippets", "dbaeumer.vscode-eslint", "stylelint.vscode-stylelint", "esbenp.prettier-vscode", "editorconfig.editorconfig", "streetsidesoftware.code-spell-checker", "syler.sass-indented", "mikestead.dotenv"]
 }
 ```
 
 :::warning
 
-- 开发 Vue3 项目请开启 Volar 插件、禁用 Vetur 插件。
-- 请配置项目默认格式化程序为 Prettier。
+- Vue3 のプロジェクトを開発する際は、Volar プラグインを有効にし、Vetur プラグインを無効にしてください。
+- プロジェクトのデフォルトのフォーマットプログラムを Prettier に設定してください。
 
 :::
 
-## 代码拉取
+## ソースコードのクローン
 
-### 从 Gitee 拉取代码：
-
-```bash
-# 克隆代码
-git clone https://gitee.com/HalseySpicy/Geeker-Admin.git
-```
-
-### 从 GitHub 拉取代码：
+### GitHub からクローンする：
 
 ```bash
-# 克隆代码
+# クローン
 git clone https://github.com/HalseySpicy/Geeker-Admin.git
 ```
 
-## 安装使用步骤
+##　インストール手順
 
-### 安装依赖：
+### 依存するパッケージをインストールする：
 
 ```bash
-# 使用 pnpm
+# pnpmでインストール
 pnpm install
 ```
 
-### 运行项目：
+### プロジェクトを実行する：
 
 ```bash
-# 以下两个命令都可以
+# 下記のいずれかのコマンドを実行
 pnpm dev
 pnpm serve
 ```
 
-### 打包项目：
+### プロジェクトをビルドする：
 
 ```bash
-# 开发环境
+# 開発環境
 pnpm build:dev
 
-# 测试环境
+# 検証環境
 pnpm build:test
 
-# 生产环境
+# 本番環境
 pnpm build:pro
 ```
 
-### 校验、格式化代码：
+### ソースコードの型をチェックとフォーマットする：
 
 ```bash
-# eslint 检测代码
+# eslintでチェック
 pnpm lint:eslint
 
-# prettier 格式化代码
+# prettierでフォーマット
 pnpm lint:prettier
 
-# stylelint 格式化样式
+# stylelintswでフォーマット
 pnpm lint:stylelint
 ```
 
-### 提交代码：
+### コミット：
 
 ```bash
-# 提交代码（提交前会自动执行 lint:lint-staged 命令）
+# 変更をコミット（コミット前に自動的に lint:lint-staged コマンドが実行されます）
 pnpm commit
 ```
 
-## npm script 详解
+## npm script 詳細
 
 ```json
 {
 	"scripts": {
-		// 本地运行(dev环境)
+		// ローカルで実行（dev環境）
 		"dev": "vite",
-		// 本地运行(dev环境)
+		// ローカルで実行（dev環境）
 		"serve": "vite",
-		// 构建打包(dev环境)
+		// ビルドパッケージ（dev環境）
 		"build:dev": "vue-tsc && vite build --mode development",
-		// 构建打包(test环境)
+		// ビルドパッケージ（test環境）
 		"build:test": "vue-tsc && vite build --mode test",
-		// 构建打包(pro环境)
+		// ビルドパッケージ（pro環境）
 		"build:pro": "vue-tsc && vite build --mode production",
-		// 检查项目 ts 类型
+		// TypeScript 型をチェック
 		"type:check": "vue-tsc --noEmit --skipLibCheck",
-		// 本地环境预览构建后的 dist
+		// ローカル環境でビルド後の dist をプレビューする
 		"preview": "npm run build:dev && vite preview",
-		// 执行 eslint 校验
+		// eslint の検査を実行する
 		"lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
-		// 执行 prettier 格式化
+		// prettier でフォーマットする
 		"lint:prettier": "prettier --write \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
-		// 执行 stylelint 格式化
+		// stylelint でフォーマットする
 		"lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
-		// 执行 lint-staged.config.js 文件下的命令
+		// lint-staged.config.js ファイル中のコマンドを実行する
 		"lint:lint-staged": "lint-staged",
-		// 初始化 husky 配置
+		// husky の設定を初期化する
 		"prepare": "husky install",
-		// 自动更新版本
+		// 自動的にバージョンアップする
 		"release": "standard-version",
-		// 提交代码(可自定义配置执行命令)
+		// 変更をコミットする（コマンドのカスタムが可能）
 		"commit": "git add -A && czg && git push"
 	}
 }

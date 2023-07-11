@@ -32,18 +32,7 @@ Node.js 版本推荐安装 **16+** 以上，版本过低依赖包可能安装失
 
 ```json
 {
-	"recommendations": [
-		"vue.volar",
-		"vue.vscode-typescript-vue-plugin",
-		"hollowtree.vue-snippets",
-		"dbaeumer.vscode-eslint",
-		"stylelint.vscode-stylelint",
-		"esbenp.prettier-vscode",
-		"editorconfig.editorconfig",
-		"streetsidesoftware.code-spell-checker",
-		"syler.sass-indented",
-		"mikestead.dotenv"
-	]
+	"recommendations": ["vue.volar", "vue.vscode-typescript-vue-plugin", "hollowtree.vue-snippets", "dbaeumer.vscode-eslint", "stylelint.vscode-stylelint", "esbenp.prettier-vscode", "editorconfig.editorconfig", "streetsidesoftware.code-spell-checker", "syler.sass-indented", "mikestead.dotenv"]
 }
 ```
 
