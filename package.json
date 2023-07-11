@@ -11,7 +11,9 @@
 	"homepage": "https://github.com/HalseySpicy/Geeker-Admin-Docs",
 	"scripts": {
 		"docs:dev": "vitepress dev docs --host",
+		"docs:dev-ja": "vitepress dev docs-ja --host",
 		"docs:build": "vitepress build docs",
+		"docs:build-ja": "vitepress build docs-ja",
 		"docs:preview": "vitepress preview docs"
 	},
 	"devDependencies": {

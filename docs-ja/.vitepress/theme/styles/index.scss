@@ -1,0 +1,26 @@
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #d1d1d1;
+	border-radius: 20px;
+	box-shadow: inset 0 0 0 white;
+}
+
+.VPHome {
+	padding-bottom: 80px !important;
+	.image-bg {
+		background-image: linear-gradient(-45deg, #afbcec 50%, #81e6c4 50%);
+		filter: blur(70px);
+		width: 256px;
+		height: 256px;
+	}
+}
+
+// 暗黑模式样式
+.dark {
+	::-webkit-scrollbar-thumb {
+		background-color: #4d4c4c;
+	}
+}
