@@ -57,10 +57,7 @@ export default {
 			{ text: "🍵 スポンサー", link: "/sponsor/index" },
 			{
 				text: "言語",
-				items: [
-					{ text: "中国語（簡体字）", link: "https://docs.spicyboy.cn" },
-					{ text: "日本語", link: "http://ja.spicyboy.surge.sh" },
-				],
+				items: [{ text: "简体中文", link: "https://docs.spicyboy.cn" }],
 			},
 		],
 
