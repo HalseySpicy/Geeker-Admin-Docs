@@ -2,8 +2,8 @@ import mdItCustomAttrs from "markdown-it-custom-attrs";
 
 export default {
 	title: "Geeker-Admin",
-	lang: "zh-CN",
-	description: "Geeker Admin 中文文档",
+	lang: "ja",
+	description: "Geeker Admin ドキュメンテーション",
 	head: [
 		["meta", { name: "author", content: "HalseySpicy" }],
 		["meta", { name: "keywords", content: "Geeker, Geeker-Admin, Geeker-Admin-Docs, Vite, Vue, Vue3, Admin" }],
@@ -21,18 +21,18 @@ export default {
 			indexName: "Geeker-Admin",
 		},
 		editLink: {
-			text: "为此页提供修改建议",
+			text: "このページの改善提案",
 			pattern: "https://github.com/HalseySpicy/Geeker-Admin-Docs",
 		},
 		socialLinks: [{ icon: "github", link: "https://github.com/HalseySpicy/Geeker-Admin" }],
 		footer: {
-			message: "MIT License.",
+			message: "MITライセンス。",
 			copyright: "Copyright © 2022 Geeker-Admin",
 		},
 		nav: [
-			{ text: "指南", link: "/guide/", activeMatch: "/guide" },
+			{ text: "ガイド", link: "/guide/", activeMatch: "/guide" },
 			{
-				text: "组件",
+				text: "コンポーネント",
 				items: [
 					{ text: "ProTable", link: "/components/proTable" },
 					{ text: "SelectIcon", link: "/components/selectIcon" },
@@ -45,55 +45,55 @@ export default {
 				],
 			},
 			{
-				text: "相关链接",
+				text: "関連リンク",
 				items: [
-					{ text: "预览地址", link: "https://admin.spicyboy.cn/" },
-					{ text: "Gitee 源码", link: "https://gitee.com/HalseySpicy/Geeker-Admin" },
-					{ text: "GitHub 源码", link: "https://github.com/HalseySpicy/Geeker-Admin" },
-					{ text: "文档源码", link: "https://github.com/HalseySpicy/Geeker-Admin-Docs" },
-					{ text: "更新日志", link: "https://github.com/HalseySpicy/Geeker-Admin/blob/master/CHANGELOG.md" },
+					{ text: "プレビューアドレス", link: "https://admin.spicyboy.cn/" },
+					{ text: "Gitee ソースコード", link: "https://gitee.com/HalseySpicy/Geeker-Admin" },
+					{ text: "GitHub ソースコード", link: "https://github.com/HalseySpicy/Geeker-Admin" },
+					{ text: "ドキュメンテーションのソースコード", link: "https://github.com/HalseySpicy/Geeker-Admin-Docs" },
+					{ text: "更新履歴", link: "https://github.com/HalseySpicy/Geeker-Admin/blob/master/CHANGELOG.md" },
 				],
 			},
-			{ text: "🍵 赞助", link: "/sponsor/index" },
+			{ text: "🍵 スポンサー", link: "/sponsor/index" },
 			{
-				text: "语言",
-				items: [{ text: "日本語", link: "http://ja.spicyboy.surge.sh" }],
+				text: "言語",
+				items: [{ text: "简体中文", link: "https://docs.spicyboy.cn" }],
 			},
 		],
 
 		sidebar: {
 			"/guide/": [
 				{
-					text: "指南",
+					text: "ガイド",
 					collapsible: true,
 					items: [
-						{ text: "介绍", link: "/guide/introduce" },
-						{ text: "快速上手", link: "/guide/" },
-						{ text: "目录结构", link: "/guide/catalogue" },
-						{ text: "路由、菜单", link: "/guide/router" },
-						{ text: "权限管理", link: "/guide/auth" },
-						{ text: "网络请求", link: "/guide/request" },
-						{ text: "构建、部署", link: "/guide/build" },
+						{ text: "紹介", link: "/guide/introduce" },
+						{ text: "クイックスタート", link: "/guide/" },
+						{ text: "ディレクトリ構造", link: "/guide/catalogue" },
+						{ text: "ルーティング、メニュー", link: "/guide/router" },
+						{ text: "権限管理", link: "/guide/auth" },
+						{ text: "ネットワークリクエスト", link: "/guide/request" },
+						{ text: "ビルド、デプロイ", link: "/guide/build" },
 					],
 				},
 				{
-					text: "进阶",
+					text: "高度な使い方",
 					collapsible: true,
 					items: [
-						{ text: "项目规范", link: "/guide/standard" },
-						{ text: "主题配置", link: "/guide/theme" },
-						{ text: "布局模式", link: "/guide/layout" },
+						{ text: "プロジェクトの規範", link: "/guide/standard" },
+						{ text: "テーマ設定", link: "/guide/theme" },
+						{ text: "レイアウトモード", link: "/guide/layout" },
 					],
 				},
 				{
-					text: "其他",
+					text: "その他",
 					collapsible: true,
-					items: [{ text: "常见问题", link: "/guide/question" }],
+					items: [{ text: "よくある質問", link: "/guide/question" }],
 				},
 			],
 			"/components/": [
 				{
-					text: "组件",
+					text: "コンポーネント",
 					items: [
 						{ text: "ProTable", link: "/components/proTable" },
 						{ text: "SelectIcon", link: "/components/selectIcon" },
