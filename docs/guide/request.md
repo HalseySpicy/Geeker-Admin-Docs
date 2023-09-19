@@ -9,7 +9,7 @@
 ├─ api                       # 网络请求文件夹
 ├ ├─config                   # 网络请求相关配置 e.p：公共URL前缀
 ├ ├─helper                   # 辅助函数：错误处理、取消请求
-├ ├ ├─axiosCancel.ts         # 取消请求
+├ ├ ├─axiosCancel.ts         # 取消请求函数
 ├ ├ ├─checkStatus.ts         # 检查请求返回的状态
 ├ ├─interface                # api接口的请求参数和返回数据的类型定义文件夹
 ├ ├─modules                  # 请求函数模块，强烈建议根据不同的模块创建不同的请求文件
@@ -36,13 +36,13 @@ const config: AxiosRequestConfig = {
 
 你可以在此处修改或添加 axios 的基本配置。
 
-:::warning 警告
-因为工程性等原因，`baseURL`是通过环境变量加载的。你应该去项目根目录下的`.env.***`文件中修改`VITE_API_URL`，而不是在此处直接修改。
+:::warning 提示
+`baseURL`是通过环境变量加载的，可以通过项目根目录下的`.env.***`文件中修改`VITE_API_URL`，而不是在此处直接修改。
 :::
 
 ## 请求拦截
 
-代码位置：`index.ts 30:48`
+代码位置：`index.ts 30:49`
 
 ```ts
 /**
@@ -53,8 +53,9 @@ const config: AxiosRequestConfig = {
 this.service.interceptors.request.use(
 	(config: CustomAxiosRequestConfig) => {
 		const userStore = useUserStore();
-		// 当前请求不需要显示 loading，在 api 服务中通过指定的第三个参数: { noLoading: true } 来控制
-		config.noLoading || showFullScreenLoading();
+		// 当前请求不需要显示 loading，在 api 服务中通过指定的第三个参数: { loading: false } 来控制
+		config.loading ?? (config.loading = true);
+		config.loading && showFullScreenLoading();
 		if (config.headers && typeof config.headers.set === "function") {
 			config.headers.set("x-access-token", userStore.token);
 		}
@@ -66,11 +67,11 @@ this.service.interceptors.request.use(
 );
 ```
 
-- 在请求之前检查当前请求需不需要全局的 loading，并且在 header 请求头中携带`x-access-token`。这个 token 名称要根据实际情况，不一定叫`x-access-token`，可以跟后端确认一下。而且 token 也不一定是放在 header 里面，具体情况根据自己项目配置。
+- 在请求之前检查当前请求需不需要全局的 loading，并且在 header 请求头中携带`x-access-token`。token 名称不一定是`x-access-token`，具体情况根据自己项目配置。
 
 ## 响应拦截
 
-代码位置：`index.ts 50:87`
+代码位置：`index.ts 51:88`
 
 ```typescript
 /**
