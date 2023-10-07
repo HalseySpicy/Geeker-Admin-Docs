@@ -17,7 +17,7 @@
 ├ ├─ modules                  # 路由模块
 ├ ├ ├─ dynamicRouter.ts       # 动态路由添加逻辑
 ├ │ └─ staticRouter.ts        # 静态路由配置
-├ └─index.ts                  # 封装后的axios
+├ └─index.ts                  # 封装后的router
 └─
 ```
 
