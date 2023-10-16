@@ -1,82 +1,82 @@
-# 路由、菜单
+# ルーティング メニュー
 
-路由配置在 [src/routers](https://github.com/HalseySpicy/Geeker-Admin/tree/master/src/routers) 文件下面：
+ルーティング設定ファイル [src/routers](https://github.com/HalseySpicy/Geeker-Admin/tree/master/src/routers)：
 
 ::: tip
 
-- 项目默认采用动态添加路由方式控制
-- 需要其它路由功能根据自己项目需求改造
+- 当プロジェクトデフォルトではダイナミックルーティングを利用しています
+- スタティックルーティングを利用する場合は自由に改造可能です
 
 :::
 
-## 目录结构
+## ディレクトリ
 
 ```txt
 .
-├─ routers                    # 路由相关文件
-├ ├─ modules                  # 路由模块
-├ ├ ├─ dynamicRouter.ts       # 动态路由添加逻辑
-├ │ └─ staticRouter.ts        # 静态路由配置
-├ └─index.ts                  # 封装后的axios
+├─ routers                    # ルーティング関連のファイル
+├ ├─ modules                  # ルーティングモジュール
+├ ├ ├─ dynamicRouter.ts       # ダイナミックルーティング
+├ │ └─ staticRouter.ts        # スタティックルーティング
+├ └─index.ts                  # axios
 └─
 ```
 
-## 路由参数
+## ルーティングのパラメータ
 
 ```typescript
-/** 路由参数简介 */
+/** ルーティングパラメータの概要 */
 interface RouteRecordRaw {
-	/** 路由访问路径 */
+	/** パス */
 	path: string;
-	/** 路由 name (对应页面组件 name, 可用作 KeepAlive 缓存标识 && 按钮权限筛选) */
+	/** ネーム (コンポーネントネーム, KeepAlive キャッシュのキー && ボタン権限のフィルターのキー) */
 	name: string;
-	/** 路由重定向地址 */
+	/** リダイレクト */
 	redirect: string;
-	/** 视图文件路径 */
+	/** ビューのパス */
 	component: string | (() => Promise<unknown>);
-	/** 路由元信息 */
+	/** メタ情 */
 	meta: {
-		/** 菜单和面包屑对应的图标 */
+		/**  メニューとパンくずリストのアイコン */
 		icon: string;
-		/** 路由标题 (用作 document.title || 菜单的名称) */
+		/** ルーティングのタイトル (document.title または メニュー名に使われる) */
 		title: string;
-		/** 是否在菜单中隐藏, 需要高亮的 path (通常用作详情页高亮父级菜单) */
+		/** メニュー内で隠すかどうか、ハイライトが必要なパス（通常、詳細ページで親メニューをハイライトするために使用） */
 		activeMenu: string;
-		/** 路由外链时填写的访问地址 */
+		/** 外部リングのパス */
 		isLink: string;
-		/** 是否在菜单中隐藏 (通常列表详情页需要隐藏) */
+		/** メニュー内で非表示フラグ */
 		isHide: boolean;
-		/** 菜单是否全屏 (示例：数据大屏页面) */
+		/** メニューが全画面表示フラグ */
 		isFull: boolean;
-		/** 菜单是否固定在标签页中 (首页通常是固定项) */
+		/** メニューがタブページに固定フラグ（ホームページは通常固定されています） */
 		isAffix: boolean;
-		/** 当前路由是否缓存 */
+		/** ルーティングがキャッシュフラグ */
 		isKeepAlive: boolean;
 	};
-	/** 多级路由嵌套 */
+	/** 子ルート */
 	children: RouteRecordRaw[];
 }
 ```
 
-## 路由实现
+## ルーティングの実装
 
-- 默认根据后端接口返回的数据生成动态路由
-- 如果想把路由变成本地，直接更改 [src/api/modules/login.ts => getAuthMenuListApi](https://github.com/HalseySpicy/Geeker-Admin/blob/master/src/api/modules/login.ts) 方法
+- ディフォルトはバックエンドへルーティングデータをリクエストします
+- ルーティングデータをローカル置きたい場合は [src/api/modules/login.ts => getAuthMenuListApi](https://github.com/HalseySpicy/Geeker-Admin/blob/master/src/api/modules/login.ts)このように修正します 
 
 ```typescript
 import authMenuList from "@/assets/json/authMenuList.json";
 
-// 获取菜单列表
+// メニューリストを取得
 export const getAuthMenuListApi = () => {
 	// return http.get<Menu.MenuOptions[]>(PORT1 + `/menu/list`, {}, { noLoading: true });
-	// 如果想让菜单变为本地数据，注释上一行代码，并引入本地 authMenuList.json 数据
+	// メニューをローカルデータにしたい場合は、上の行のコードをコメントアウトし、ローカルのauthMenuList.jsonデータをインポートしてください。
 	return authMenuList;
 };
 ```
 
-## 新增路由
+## ルートの追加
 
-### 一级路由
+### 親ルート
 
 ```typescript
 const home = {
@@ -85,7 +85,7 @@ const home = {
 	component: "/home/index",
 	meta: {
 		icon: "HomeFilled",
-		title: "首页",
+		title: "ホーム",
 		isLink: "",
 		isHide: false,
 		isFull: false,
@@ -95,7 +95,7 @@ const home = {
 };
 ```
 
-### 二级路由
+### 子ルート
 
 ```typescript
 const proTable = {
@@ -104,7 +104,7 @@ const proTable = {
 	redirect: "/proTable/useProTable",
 	meta: {
 		icon: "MessageBox",
-		title: "超级表格",
+		title: "スーパーテーブル",
 		isLink: "",
 		isHide: false,
 		isFull: false,
@@ -118,7 +118,7 @@ const proTable = {
 			component: "/proTable/useProTable/index",
 			meta: {
 				icon: "Menu",
-				title: "使用 ProTable",
+				title: "Use ProTable",
 				isLink: "",
 				isHide: false,
 				isFull: false,
@@ -130,7 +130,7 @@ const proTable = {
 };
 ```
 
-### 动态路由（父级子级详情页）
+### ダイナミックルーティング（親-子階層）
 
 ```typescript
 const proTable = {
@@ -139,7 +139,7 @@ const proTable = {
 	redirect: "/proTable/useProTable",
 	meta: {
 		icon: "MessageBox",
-		title: "超级表格",
+		title: "スーパーテーブル",
 		isLink: "",
 		isHide: false,
 		isFull: false,
@@ -153,7 +153,7 @@ const proTable = {
 			component: "/proTable/useProTable/index",
 			meta: {
 				icon: "Menu",
-				title: "使用 ProTable",
+				title: "Use ProTable",
 				isLink: "",
 				isHide: false,
 				isFull: false,
@@ -167,7 +167,7 @@ const proTable = {
 					component: "/proTable/useProTable/detail",
 					meta: {
 						icon: "Menu",
-						title: "ProTable 详情",
+						title: "ProTable 詳細",
 						activeMenu: "/proTable/useProTable",
 						isLink: "",
 						isHide: true,
@@ -182,7 +182,7 @@ const proTable = {
 };
 ```
 
-### 动态路由（父级同级详情页）
+### ダイナミックルーティング（親子同階層）
 
 ```typescript
 const proTable = {
@@ -191,7 +191,7 @@ const proTable = {
 	redirect: "/proTable/useProTable",
 	meta: {
 		icon: "MessageBox",
-		title: "超级表格",
+		title: "スーパーテーブル",
 		isLink: "",
 		isHide: false,
 		isFull: false,
@@ -205,7 +205,7 @@ const proTable = {
 			component: "/proTable/useTreeFilter/index",
 			meta: {
 				icon: "Menu",
-				title: "使用 TreeFilter",
+				title: "Use TreeFilter",
 				isLink: "",
 				isHide: false,
 				isFull: false,
@@ -219,7 +219,7 @@ const proTable = {
 			component: "/proTable/useTreeFilter/detail",
 			meta: {
 				icon: "Menu",
-				title: "TreeFilter 详情",
+				title: "TreeFilter 詳細",
 				activeMenu: "/proTable/useTreeFilter",
 				isLink: "",
 				isHide: true,
@@ -232,14 +232,14 @@ const proTable = {
 };
 ```
 
-## 菜单
+## メニュー
 
-- 根据路由数据转换而来
-- 所以只要更改路由信息菜单会随之改变，整个项目只需维护一套数据即可
+- ルーティングデータから取得
+- したがって、ルーティングデータ変更するとメニューも変わります、ルーティングとメニュー一緒に管理することが可能になります。
 
 ::: tip
 
-- 菜单展示时需要过滤掉 isHide 属性为 true 的路由
+- メニュー表示する際にisHide属性がtrueになっているルートがフィルターされます。
 
 :::
 
@@ -247,8 +247,8 @@ const proTable = {
 
 ```typescript
 /**
- * @description 使用递归过滤出需要渲染在左侧菜单的列表 (需剔除 isHide == true 的菜单)
- * @param {Array} menuList 菜单列表
+ * @description メニューデータをスキャンしてリンダする (meta.isHide == trueのルートを非表示する)
+ * @param {Array} menuList メニューリスト
  * @returns {Array}
  * */
 export function getShowMenuList(menuList: Menu.MenuOptions[]) {
